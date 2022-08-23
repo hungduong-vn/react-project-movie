@@ -1,0 +1,34 @@
+.homeHeader {
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 100;
+}
+.homeLogo {
+  line-height: 4rem;
+  font-size: 35px;
+  transition: all 0.5s;
+  color: rgb(220,220,220);
+  &:hover {
+    color: white;
+    transform: rotate(180deg);
+  }
+}
+
+.homeLink {
+  position: relative;
+  color: rgb(220,220,220);
+  font-weight: 500;
+  transition: all 0.5s;
+  &:hover {
+    color: white;
+    border-color: white;
+    transform: translateY(-10px);
+  }
+}
+
+.homeSignUp {
+  background-color: rgb(220,220,220);
+  transition: all 0.5s;
+  &:hover {
+    background-color: white;
+  }
+}
