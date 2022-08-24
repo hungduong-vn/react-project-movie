@@ -6,16 +6,19 @@
   line-height: 4rem;
   font-size: 35px;
   transition: all 0.5s;
-  color: rgb(220,220,220);
+  color: rgb(220, 220, 220);
   &:hover {
     color: white;
     transform: rotate(180deg);
   }
 }
-
+.activeHomeLink {
+  color: white;
+  border-color: white;
+}
 .homeLink {
   position: relative;
-  color: rgb(220,220,220);
+  color: rgb(220, 220, 220);
   font-weight: 500;
   transition: all 0.5s;
   &:hover {
@@ -24,11 +27,19 @@
     transform: translateY(-10px);
   }
 }
-
-.homeSignUp {
-  background-color: rgb(220,220,220);
+.homeSignIn {
+  color: rgb(220, 220, 220);
   transition: all 0.5s;
   &:hover {
+    color: white;
+  }
+}
+.homeSignUp {
+  background-color: rgb(220, 220, 220);
+  color: black;
+  transition: all 0.5s;
+  &:hover {
+    color: black;
     background-color: white;
   }
 }

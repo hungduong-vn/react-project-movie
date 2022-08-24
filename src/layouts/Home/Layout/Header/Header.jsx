@@ -1,60 +1,74 @@
 import React from "react";
-import "./Header.scss"
+import { NavLink } from "react-router-dom";
+import "./Header.scss";
 export default function Header() {
+  const homeLinkClassName =
+    "flex items-center px-4 -mb-1 border-b-2 border-transparent homeLink";
   return (
     <header className="p-4 bg-gray-100 text-gray-800 fixed w-100 homeHeader">
-      <div className="container flex justify-between h-16 mx-auto">
-        <a
+      <div className="container grid grid-cols-4 h-16 mx-auto">
+        <NavLink
           rel="noopener noreferrer"
-          href="#"
           aria-label="Back to homepage"
-          className="flex items-center"
+          className="flex items-center col-span-1"
+          to='/'
         >
           <i className="icofont-movie homeLogo"></i>
-        </a>
-        <ul className="items-stretch hidden space-x-3 lg:flex">
+        </NavLink>
+        <ul className="items-stretch hidden space-x-3 lg:flex justify-center col-span-2">
           <li className="flex">
-            <a
+            <NavLink
               rel="noopener noreferrer"
-              href="#"
-              className="flex items-center px-4 -mb-1 border-b-2 border-transparent homeLink"
+              className={({ isActive }) =>
+                isActive
+                  ? homeLinkClassName + " activeHomeLink"
+                  : homeLinkClassName
+              }
+              to="/"
             >
-              Link
-            </a>
+              Home
+            </NavLink>
           </li>
           <li className="flex">
-            <a
+            <NavLink
               rel="noopener noreferrer"
-              href="#"
-              className="flex items-center px-4 -mb-1 border-b-2 border-transparent homeLink"
+              className={({ isActive }) =>
+                isActive
+                  ? homeLinkClassName + " activeHomeLink"
+                  : homeLinkClassName
+              }
+              to="news"
             >
-              Link
-            </a>
+              News
+            </NavLink>
           </li>
           <li className="flex">
-            <a
+            <NavLink
               rel="noopener noreferrer"
-              href="#"
-              className="flex items-center px-4 -mb-1 border-b-2 border-transparent homeLink"
+              className={({ isActive }) =>
+                isActive
+                  ? homeLinkClassName + " activeHomeLink"
+                  : homeLinkClassName
+              }
+              to="contact"
             >
-              Link
-            </a>
-          </li>
-          <li className="flex">
-            <a
-              rel="noopener noreferrer"
-              href="#"
-              className="flex items-center px-4 -mb-1 border-b-2 border-transparent homeLink"
-            >
-              Link
-            </a>
+              Contact
+            </NavLink>
           </li>
         </ul>
-        <div className="items-center flex-shrink-0 hidden lg:flex">
-          <button className="self-center px-8 py-3 rounded homeSignIn font-semibold text-gray-50">Sign in</button>
-          <button className="self-center px-8 py-3 font-semibold rounded homeSignUp">
+        <div className="items-center flex-shrink-0 hidden lg:flex col-span-1">
+          <NavLink
+            to="sign-in"
+            className="self-center px-8 py-3 rounded homeSignIn font-semibold text-gray-50"
+          >
+            Sign in
+          </NavLink>
+          <NavLink
+            to="sign-up"
+            className="self-center px-8 py-3 font-semibold rounded homeSignUp"
+          >
             Sign up
-          </button>
+          </NavLink>
         </div>
         <button className="p-4 lg:hidden">
           <svg
