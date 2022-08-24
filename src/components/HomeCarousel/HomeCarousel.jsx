@@ -1,28 +1,29 @@
 import { Carousel } from "antd";
-import React from "react";
-const contentStyle = {
-  height: "350px",
-  color: "#fff",
-  lineHeight: "350px",
-  textAlign: "center",
-  background: "#364d79",
+import React, { useEffect, useState } from "react";
+import { getBanners } from "../../services/banners";
+import "./HomeCarousel.scss";
+const HomeCarousel = () => {
+  const [banners, setBanners] = useState([]);
+  const fetchBanners = async () => {
+    const result = await getBanners();
+    setBanners(result.data.content);
+  };
+  useEffect(() => {
+    fetchBanners();
+  }, []);
+  return (
+    <Carousel effect="fade">
+      {banners.map((ele) => (
+        <div key={ele.maBanner} className="banner">
+          <img
+            className="img-fluid"
+            src={ele.hinhAnh}
+            alt={`banner_${ele.maPhim}`}
+          />
+        </div>
+      ))}
+    </Carousel>
+  );
 };
-
-const HomeCarousel = () => (
-  <Carousel effect="fade">
-    <div>
-      <h3 style={contentStyle}>1</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>2</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>3</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>4</h3>
-    </div>
-  </Carousel>
-);
 
 export default HomeCarousel;
