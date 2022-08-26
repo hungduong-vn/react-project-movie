@@ -6,7 +6,7 @@ import {
   getCinemaList,
   selectCinema,
 } from "../../../store/actions/cinema.action";
-import { formatDate } from "../../../utils/helper";
+import { filterShowtimesByDay, formatDate } from "../../../utils/helper";
 import "./HomeMenu.scss";
 const { TabPane } = Tabs;
 
@@ -20,6 +20,22 @@ const HomeMenu = () => {
   const handleClickCinema = (ele) => {
     console.log("Click: ", ele.maHeThongRap);
     dispatch(selectCinema(ele.maHeThongRap));
+  };
+  const renderShowtimes = (showtimeList) => {
+    const showtimes = filterShowtimesByDay(showtimeList);
+    console.log(showtimes );
+    const renderArr = [];
+    for (const i in showtimes) {
+      renderArr.push(
+        <div className="showtime py-3" key={i}>
+          <h1>{i}</h1>
+          {showtimes[i].map((time, idx) => {
+            return <button key={idx} className="m-1 btn btn-outline-dark">{time}</button>;
+          })}
+        </div>
+      );
+    }
+    return renderArr;
   };
   const renderCinema = () => {
     console.log(state.cinema);
@@ -57,12 +73,16 @@ const HomeMenu = () => {
                           key={film.maPhim}
                           tab={
                             <div className="movieInfo d-flex">
-                              <img width={100} src={film.hinhAnh} alt={film.tenPhim} />
+                              <img
+                                width={100}
+                                src={film.hinhAnh}
+                                alt={film.tenPhim}
+                              />
                               <h1 className="ml-3 text-left">{film.tenPhim}</h1>
                             </div>
                           }
                         >
-                          <div className="movieShowtimes row">
+                          {/* <div className="movieShowtimes row">
                             {film.lstLichChieuTheoPhim.map((showtime) => {
                               return (
                                 <div
@@ -73,6 +93,9 @@ const HomeMenu = () => {
                                 </div>
                               );
                             })}
+                          </div> */}
+                          <div className="showtimes">
+                            {renderShowtimes(film.lstLichChieuTheoPhim)}
                           </div>
                         </TabPane>
                       );
@@ -89,6 +112,9 @@ const HomeMenu = () => {
   return (
     <div className="container py-5">
       <>
+        {/* {filterShowtimesByDay([
+          state.cinema[0]?.lstCumRap[0]?.danhSachPhim[0]?.lstLichChieuTheoPhim,
+        ])} */}
         <Tabs tabPosition="left" style={{ height: 600 }}>
           {renderCinema()}
         </Tabs>

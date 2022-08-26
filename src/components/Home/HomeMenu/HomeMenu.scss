@@ -9,3 +9,10 @@
 .movieInfo {
   max-width: 300px;
 }
+.showtimes {
+  max-height: 600px;
+  overflow-y: scroll;
+}
+.showtime {
+  border-bottom: 1px solid grey;
+}
