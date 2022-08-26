@@ -28,7 +28,7 @@ const HomeMenu = () => {
     for (const i in showtimes) {
       renderArr.push(
         <div className="showtime py-3" key={i}>
-          <h1>{i}</h1>
+          <h1 className="pl-1">{i}</h1>
           {showtimes[i].map((time, idx) => {
             return <button key={idx} className="m-1 btn btn-outline-dark">{time}</button>;
           })}
