@@ -1,6 +1,6 @@
 import { Carousel } from "antd";
 import React, { useEffect, useState } from "react";
-import { getBanners } from "../../services/banners";
+import { getBanners } from "../../../services/banners";
 import "./HomeCarousel.scss";
 const HomeCarousel = () => {
   const [banners, setBanners] = useState([]);

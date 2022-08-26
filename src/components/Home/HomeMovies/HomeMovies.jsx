@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { getMovieList } from "../../services/movieList";
+import { getMovieList } from "../../../services/movieList";
 import { truncate } from "lodash";
 import "./HomeMovies.scss";
 export default function HomeMovies() {

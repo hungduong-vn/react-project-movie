@@ -1,7 +1,7 @@
 import React from "react";
-import HomeCarousel from "../../../components/HomeCarousel/HomeCarousel";
-import HomeMenu from "../../../components/HomeMenu/HomeMenu";
-import HomeMovies from "../../../components/HomeMovies/HomeMovies";
+import HomeCarousel from "../../../components/Home/HomeCarousel/HomeCarousel";
+import HomeMenu from "../../../components/Home/HomeMenu/HomeMenu";
+import HomeMovies from "../../../components/Home/HomeMovies/HomeMovies";
 
 export default function HomeContent() {
   return (
