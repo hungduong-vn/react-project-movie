@@ -16,10 +16,13 @@ export const filterShowtimesByDay = (showtimes) => {
     return { date: date[0], time: date[1] };
   });
   // console.log({ timeList });
-  let dateList = _.groupBy(timeList, 'date');
+  let dateList = _.groupBy(timeList, "date");
   // console.log({ dateList });
+  const result = [];
   for (const i in dateList) {
-    dateList[i] = dateList[i].map(ele => ele.time).sort()
+    dateList[i] = dateList[i].map((ele) => ele.time).sort();
+    result.push({ date: i, timeList: dateList[i] });
   }
-  return dateList;
+  // console.log(result);
+  return result;
 };

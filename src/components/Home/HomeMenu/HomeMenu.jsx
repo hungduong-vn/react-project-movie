@@ -2,11 +2,8 @@ import { Tabs } from "antd";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 // import { NavLink } from "react-router-dom";
-import {
-  getCinemaList,
-  selectCinema,
-} from "../../../store/actions/cinema.action";
-import { filterShowtimesByDay, formatDate } from "../../../utils/helper";
+import { getCinemaList } from "../../../store/actions/cinema.action";
+import { filterShowtimesByDay } from "../../../utils/helper";
 import "./HomeMenu.scss";
 const { TabPane } = Tabs;
 
@@ -17,25 +14,35 @@ const HomeMenu = () => {
     dispatch(getCinemaList());
     // dispatch(selectCinema(state.cinema[0].maHeThongRap));
   }, []);
-  const handleClickCinema = (ele) => {
-    console.log("Click: ", ele.maHeThongRap);
-    dispatch(selectCinema(ele.maHeThongRap));
-  };
   const renderShowtimes = (showtimeList) => {
     const showtimes = filterShowtimesByDay(showtimeList);
-    console.log(showtimes );
-    const renderArr = [];
-    for (const i in showtimes) {
-      renderArr.push(
-        <div className="showtime py-3" key={i}>
-          <h1 className="pl-1">{i}</h1>
-          {showtimes[i].map((time, idx) => {
-            return <button key={idx} className="m-1 btn btn-outline-dark">{time}</button>;
+    // console.log(showtimes );
+    // const renderArr = [];
+    // for (const i in showtimes) {
+    //   renderArr.push(
+    //     <div className="showtime py-3" key={i}>
+    //       <h1 className="pl-1">{i}</h1>
+    //       {showtimes[i].map((time, idx) => {
+    //         return <button key={idx} className="m-1 btn btn-outline-dark">{time}</button>;
+    //       })}
+    //     </div>
+    //   );
+    // }
+    // return renderArr;
+    return showtimes.map((ele, idx) => {
+      return (
+        <div className={`showtime py-3${idx === 0?" firstShow":""}`} key={ele.date}>
+          <h1 className="pl-1">{ele.date}</h1>
+          {ele.timeList.map((time, idxTime) => {
+            return (
+              <button key={idxTime} className="m-1 btn btn-outline-dark">
+                {time}
+              </button>
+            );
           })}
         </div>
       );
-    }
-    return renderArr;
+    });
   };
   const renderCinema = () => {
     console.log(state.cinema);
