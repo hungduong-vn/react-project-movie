@@ -6,6 +6,7 @@ import {
   getCinemaList,
   selectCinema,
 } from "../../../store/actions/cinema.action";
+import { formatDate } from "../../../utils/helper";
 import "./HomeMenu.scss";
 const { TabPane } = Tabs;
 
@@ -68,7 +69,7 @@ const HomeMenu = () => {
                                   className="col-4"
                                   key={showtime.maLichChieu}
                                 >
-                                  {showtime.ngayChieuGioChieu}
+                                  {formatDate(showtime.ngayChieuGioChieu)}
                                 </div>
                               );
                             })}
