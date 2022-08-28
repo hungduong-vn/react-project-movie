@@ -25,11 +25,25 @@ export default function HomeMovie({ movie }) {
     //   </div>
     // </div>
     <div className="home__posterContainer">
-      <img
-        src={movie.hinhAnh}
-        alt=""
-        className="w-full h-full"
-      />
+      <img src={movie.hinhAnh} alt="" className="w-full h-full" />
+      <div className="overlay_homePoster">
+        <div className="poster__content">
+          <div className="poster__name h-5/6 p-3">
+            <h1>{movie.tenPhim}</h1>
+          </div>
+          <div className="poster__btn h-1/6 d-flex justify-between align-items-center px-3">
+            <button type="button" className="btn btn-outline-light bookBtn">
+              More Info
+            </button>
+            <button type="button" className="btn btn-light bookBtn">
+              Book{" "}
+              <div className="ticketIcon d-inline-block">
+                <i class="icofont-ticket"></i>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
