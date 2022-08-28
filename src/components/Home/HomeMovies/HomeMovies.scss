@@ -1,6 +1,6 @@
 .moviesWrapper {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: 1fr;
   grid-column-gap: 30px;
   grid-row-gap: 30px;
@@ -13,4 +13,8 @@
 .bookBtn {
   // position: absolute;
   // bottom: 30px;
+}
+.home__posterContainer {
+  width: 240px;
+  height: 350px;
 }
