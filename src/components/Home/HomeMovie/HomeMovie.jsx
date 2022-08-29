@@ -4,7 +4,7 @@ export default function HomeMovie({ movie }) {
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/movie-detail/${movie.maPhim}`);
-  }
+  };
   return (
     <div className="home__posterContainer">
       <img src={movie.hinhAnh} alt="" className="w-full h-full" />
@@ -14,13 +14,21 @@ export default function HomeMovie({ movie }) {
             <h1>{movie.tenPhim}</h1>
           </div>
           <div className="poster__btn h-1/6 d-flex justify-between align-items-center px-3">
-            <button type="button" className="btn btn-outline-light bookBtn" onClick={() => handleClick()}>
+            <button
+              type="button"
+              className="btn btn-outline-light bookBtn"
+              onClick={() => handleClick()}
+            >
               More Info
             </button>
-            <button type="button" className="btn btn-light bookBtn" onClick={() => handleClick()}>
-              Book{" "}
+            <button
+              type="button"
+              className="btn btn-light bookBtn"
+              onClick={() => handleClick()}
+            >
+              Book
               <div className="ticketIcon d-inline-block">
-                <i className="icofont-ticket"></i>
+                <span class="material-symbols-outlined">local_activity</span>
               </div>
             </button>
           </div>

@@ -4,7 +4,7 @@ import { formatDate } from "../../../utils/helper";
 import "./MovieInfo.scss";
 import MovieTrailer from "../MovieTrailer/MovieTrailer";
 export default function MovieInfo({ info }) {
-  console.log({ info });
+  // console.log({ info });
   const [showTrailer, setShowTrailer] = useState(false);
   const handleTrailerClick = () => {
     setShowTrailer(true);
@@ -34,7 +34,7 @@ export default function MovieInfo({ info }) {
           </div>
         </div>
       </div>
-        {showTrailer && <MovieTrailer link={info.trailer} setShowState={setShowTrailer}/>}
+        {showTrailer && <MovieTrailer link={info.trailer} setShowState={setShowTrailer} title={info.tenPhim}/>}
     </div>
   );
 }

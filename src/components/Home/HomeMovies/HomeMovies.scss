@@ -12,7 +12,7 @@
   display: flex;
   align-items: space-between;
 }
-.btn.btn-light{
+.btn.btn-light {
   background-color: #f8f9fa;
 }
 .bookBtn {
@@ -32,16 +32,16 @@
     height: 100%;
     width: 100%;
     display: none;
-    .poster__content{
+    .poster__content {
       height: 100%;
-      .poster__name h1{
+      .poster__name h1 {
         color: white;
         font-size: 30px;
       }
       .poster__btn {
         background-color: rgba(0, 0, 0, 0.75);
         .ticketIcon {
-          transform: rotate(108deg);
+          transform: rotate(90deg);
         }
       }
     }
@@ -53,4 +53,7 @@
       display: block;
     }
   }
+}
+.bookBtn {
+  line-height: 30px;
 }
