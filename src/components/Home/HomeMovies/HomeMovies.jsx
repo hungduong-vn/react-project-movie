@@ -6,7 +6,7 @@ export default function HomeMovies() {
   const [movieList, setMovieList] = useState([]);
   const fetchMovieList = async () => {
     const result = await getMovieList();
-    console.log("movielist", result.data.content);
+    // console.log("movielist", result.data.content);
     setMovieList(result.data.content);
   };
   useEffect(() => {

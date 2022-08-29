@@ -2,16 +2,32 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 export default function Header() {
+  window.onscroll = () => {
+    const headerEle = document.querySelector(".homeHeader");
+    const signUpBtn = document.querySelector(".homeSignUp");
+    if (window.scrollY > 120) {
+      headerEle.classList.add('homeHeader__scrolled');
+      headerEle.classList.remove('py-4');
+      // signUpBtn.classList.remove('px-8');
+      signUpBtn.classList.remove('py-3');
+      signUpBtn.classList.add('py-2');
+    } else {
+      headerEle.classList.remove('homeHeader__scrolled');
+      headerEle.classList.add('py-4');
+      signUpBtn.classList.add('py-3');
+      signUpBtn.classList.remove('py-2');
+    }
+  };
   const homeLinkClassName =
     "flex items-center px-4 -mb-1 border-b-2 border-transparent homeLink";
   return (
-    <header className="p-4 bg-gray-100 text-gray-800 fixed w-100 homeHeader">
+    <header className="px-4 py-4 bg-gray-100 text-gray-800 w-100 homeHeader">
       <div className="container grid grid-cols-4 h-16 mx-auto">
         <NavLink
           rel="noopener noreferrer"
           aria-label="Back to homepage"
           className="flex items-center col-span-1"
-          to='/'
+          to="/"
         >
           <i className="icofont-movie homeLogo"></i>
         </NavLink>

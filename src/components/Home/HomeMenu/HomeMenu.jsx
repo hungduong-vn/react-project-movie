@@ -16,26 +16,6 @@ const HomeMenu = () => {
   useEffect(() => {
     dispatch(getCinemaList());
   }, []);
-  const renderShowtimes = (showtimeList) => {
-    const showtimes = filterShowtimesByDay(showtimeList);
-    return showtimes.map((ele, idx) => {
-      return (
-        <div
-          className={`showtime py-3${idx === 0 ? " firstShow" : ""}`}
-          key={ele.date}
-        >
-          <h1 className="pl-1">{ele.date}</h1>
-          {ele.timeList.map((time, idxTime) => {
-            return (
-              <button key={idxTime} className="m-1 btn btn-outline-dark">
-                {time}
-              </button>
-            );
-          })}
-        </div>
-      );
-    });
-  };
   const renderCinema = () => {
     console.log(state.cinema);
     return state.cinema?.map((ele) => {

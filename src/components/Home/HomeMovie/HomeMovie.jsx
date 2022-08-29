@@ -28,7 +28,7 @@ export default function HomeMovie({ movie }) {
             >
               Book
               <div className="ticketIcon d-inline-block">
-                <span class="material-symbols-outlined">local_activity</span>
+                <span className="material-symbols-outlined">local_activity</span>
               </div>
             </button>
           </div>

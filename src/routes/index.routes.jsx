@@ -8,6 +8,7 @@ import News from "../pages/Home/News/News";
 import SignIn from "../pages/Home/SignIn/SignIn";
 import SignUp from "../pages/Home/SignUp/SignUp";
 import MovieDetail from "../pages/MovieDetail/MovieDetail";
+import TicketRoom from "../pages/TicketRoom/TicketRoom";
 
 export default function Router() {
   const routing = useRoutes([
@@ -27,6 +28,7 @@ export default function Router() {
         { path: "sign-in", element: <SignIn /> },
         { path: "sign-up", element: <SignUp /> },
         { path: "movie-detail/:movieId", element: <MovieDetail /> },
+        { path: "ticket-room/:showtimeId", element: <TicketRoom /> },
       ],
     },
 

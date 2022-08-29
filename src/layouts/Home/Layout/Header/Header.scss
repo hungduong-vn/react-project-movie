@@ -1,6 +1,14 @@
 .homeHeader {
-  background-color: rgba(0, 0, 0, 0.25);
+  background-color: grey;
   z-index: 100;
+  transition: all 0.5s;
+}
+.homeHeader__scrolled {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  // .homeSignUp {
+
+  // }
 }
 .homeLogo {
   line-height: 4rem;

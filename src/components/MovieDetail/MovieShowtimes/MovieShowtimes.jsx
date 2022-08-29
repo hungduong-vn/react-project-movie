@@ -2,12 +2,11 @@ import { Tabs } from "antd";
 import React from "react";
 import BrandTabPane from "../../Home/HomeMenu/BrandTabPane/BrandTabPane";
 import CinemaTabPane from "../../Home/HomeMenu/CinemaTabPane/CinemaTabPane";
-import CinemaTabs from "../../Home/HomeMenu/CinemaTabs/CinemaTabs";
 import { renderShowtimes } from "../../Home/HomeMenu/MovieTabs/MovieTabs";
 
 const { TabPane } = Tabs;
 export default function MovieShowtimes({ showtimes }) {
-  console.log(showtimes);
+  // console.log({ showtimes });
   return (
     <div className="container">
       <Tabs tabPosition="left" style={{ height: "600px" }}>
@@ -17,6 +16,7 @@ export default function MovieShowtimes({ showtimes }) {
               tab={
                 <BrandTabPane
                   brands={{ logo: ele.logo, tenCumRap: ele.tenHeThongRap }}
+                  text={ele.tenHeThongRap}
                 />
               }
               key={ele.maHeThongRap}
