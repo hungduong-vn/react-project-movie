@@ -31,7 +31,6 @@ export default function Router() {
         { path: "ticket-room/:showtimeId", element: <TicketRoom /> },
       ],
     },
-
     { path: "/admin", element: <AdminLayout /> },
   ]);
   return routing;
