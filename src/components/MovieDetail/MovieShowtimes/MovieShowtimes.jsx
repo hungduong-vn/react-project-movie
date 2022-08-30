@@ -8,7 +8,7 @@ const { TabPane } = Tabs;
 export default function MovieShowtimes({ showtimes }) {
   // console.log({ showtimes });
   return (
-    <div className="container">
+    <div className="container py-5">
       <Tabs tabPosition="left" style={{ height: "600px" }}>
         {showtimes.map((ele) => {
           return (
@@ -28,7 +28,9 @@ export default function MovieShowtimes({ showtimes }) {
                       tab={<CinemaTabPane cinema={cinema} logo={ele.logo} />}
                       key={cinema.maCumRap}
                     >
-                      {renderShowtimes(cinema.lichChieuPhim)}
+                      <div className="showtimes">
+                        {renderShowtimes(cinema.lichChieuPhim)}
+                      </div>
                     </TabPane>
                   );
                 })}

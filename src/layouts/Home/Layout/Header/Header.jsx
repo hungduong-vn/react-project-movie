@@ -5,7 +5,7 @@ export default function Header() {
   window.onscroll = () => {
     const headerEle = document.querySelector(".homeHeader");
     const signUpBtn = document.querySelector(".homeSignUp");
-    if (window.scrollY > 120) {
+    if (window.scrollY > 250) {
       headerEle.classList.add('homeHeader__scrolled');
       headerEle.classList.remove('py-4');
       // signUpBtn.classList.remove('px-8');

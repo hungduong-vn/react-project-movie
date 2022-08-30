@@ -1,0 +1,20 @@
+.seat {
+  width: 35px;
+  height: 35px;
+  background-color: rgba(128, 128, 128, 0.25);
+  border-radius: 6px;
+  border: 2px solid gold;
+  cursor: pointer;
+  transition: all 0.3s;
+  &:hover {
+    background-color: grey;
+  }
+}
+
+.selected {
+  background-color: teal;
+}
+.rowName {
+  font-size: 20px;
+  font-weight: 500;
+}
