@@ -1,21 +1,32 @@
 import React, { useRef, useState } from "react";
+import { useDispatch } from "react-redux";
+import { selectSeat } from "../../../store/actions/ticket.action";
 import "./Seat.scss";
 export default function Seat({ seat }) {
-  // console.log(seat);
+  console.log(seat);
   const seatRef = useRef();
-  // const [selected, setSelected] = useState(false);
-  const handleClick = () => {
-    if (seatRef.current.classList.contains("selected")) {
-      seatRef.current.classList.remove("selected");
+  const styleSelectedSeat = () => {
+    if (seatRef.current.classList.contains("seat__selecting")) {
+      seatRef.current.classList.remove("seat__selecting");
     } else {
-      seatRef.current.classList.add("selected");
+      seatRef.current.classList.add("seat__selecting");
     }
-    console.log(seat.tenGhe);
-    // setSelected(!selected);
+  }
+  const dispatch = useDispatch();
+  const handleClick = () => {
+    styleSelectedSeat();
+    // console.log(seat.tenGhe);
+    dispatch(selectSeat(seat));
   };
   return (
     <div>
-      <div className="seat my-2" ref={seatRef} onClick={handleClick}></div>
+      <div
+        className={`seat seatHoverable my-2${
+          seat.loaiGhe === "Vip" ? " seat__vip" : ""
+        }`}
+        ref={seatRef}
+        onClick={handleClick}
+      ></div>
     </div>
   );
 }

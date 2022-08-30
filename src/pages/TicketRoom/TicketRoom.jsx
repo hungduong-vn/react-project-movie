@@ -10,6 +10,7 @@ export default function TicketRoom() {
   const fetchTicketRoom = async () => {
     const result = await getTicketRoomApi(showtimeId);
     setTicketRoom(result.data.content);
+    // console.log(result.data.content);
   };
   useEffect(() => {
     fetchTicketRoom();
@@ -17,11 +18,11 @@ export default function TicketRoom() {
   return (
     <div className="container">
       <div className="row">
-        <div className="col-9">
-          {ticketRoom&&<RoomLayout seats={ticketRoom.danhSachGhe} />}
+        <div className="col-8">
+          {ticketRoom && <RoomLayout seats={ticketRoom.danhSachGhe} />}
         </div>
-        <div className="col-3">
-          <TicketInfo />
+        <div className="col-4">
+          {ticketRoom && <TicketInfo info={ticketRoom.thongTinPhim} />}
         </div>
       </div>
     </div>

@@ -1,3 +1,7 @@
+.roomLayout__head {
+  font-size: 1rem;
+  line-height: 35px;
+}
 .screen {
   border-bottom: 50px solid #00000029;
   border-left: 50px solid transparent;
@@ -11,8 +15,35 @@
 }
 .screen__text {
   position: absolute;
-  bottom: -40px;
+  bottom: -45px;
   width: 100%;
   text-align: center;
+  font-weight: 500;
+}
+.ticketInfo__movieName {
+  font-size: 20px;
+}
+.ticketInfo__body {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+.ticketInfo__item {
+  line-height: 2rem;
+}
+.ticketInfo__itemHead {
+  font-weight: 500;
+  font-size: 1rem;
+}
+.seat__type {
+  line-height: 35px;
+}
+.ticketBill__seatType {
+  font-size: 1rem;
+}
+.ticketBill__total {
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+.ticketBill__totalPrice {
+  font-size: 1rem;
   font-weight: 500;
 }

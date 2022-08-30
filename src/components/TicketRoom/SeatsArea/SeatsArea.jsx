@@ -13,7 +13,7 @@ export default function SeatsArea({ seats }) {
           </div>
           <div className="col-11 d-flex justify-between">
             {seatRow.map((seat) => {
-              return <Seat seat={seat} key={seat.maGhe} />;
+              return <Seat seat={seat} key={seat.maGhe}/>;
             })}
           </div>
         </div>

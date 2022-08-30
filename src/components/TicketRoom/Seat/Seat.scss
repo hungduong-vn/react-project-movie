@@ -6,14 +6,35 @@
   border: 2px solid gold;
   cursor: pointer;
   transition: all 0.3s;
+}
+.seatHoverable {
   &:hover {
     background-color: grey;
   }
+  .seat__selecting {
+    &:hover {
+      background-color: rgba(0, 128, 128, 0.5);
+    }
+  }
 }
-
-.selected {
-  background-color: teal;
+.seat__selecting {
+  background-color: teal !important;
 }
+.seat__vip {
+  background-color: gold;
+}
+.seat__taken {
+  // background-image: url("https://moveek.com/build/images/seat-unavailable.74bb3c1e.png");
+  background: repeating-linear-gradient(
+    45deg,
+    hsla(0, 0%, 60%, 0.4),
+    hsla(0, 0%, 60%, 0.4) 10px,
+    hsla(0, 0%, 60%, 0.6) 0,
+    hsla(0, 0%, 60%, 0.6) 20px
+  );
+  cursor: not-allowed;
+}
+.seat,
 .rowName {
   font-size: 20px;
   font-weight: 500;
