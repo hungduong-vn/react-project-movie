@@ -4,20 +4,22 @@
   transition: all 0.5s;
 }
 .homeHeader__scrolled {
+  position: sticky;
   background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
+  top: 0;
+  left: 0;
   // .homeSignUp {
 
   // }
 }
 .homeLogo {
   line-height: 4rem;
-  font-size: 35px;
+  font-size: 3rem;
   transition: all 0.5s;
   color: rgb(220, 220, 220);
   &:hover {
     color: white;
-    transform: rotate(180deg);
+    transform: rotate(216deg);
   }
 }
 .activeHomeLink {

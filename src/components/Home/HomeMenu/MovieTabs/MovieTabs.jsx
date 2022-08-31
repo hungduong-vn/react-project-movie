@@ -6,7 +6,7 @@ import ShowtimeBtn from "../ShowtimeBtn/ShowtimeBtn";
 
 const { TabPane } = Tabs;
 export const renderShowtimes = (showtimeList) => {
-  console.log({ showtimeList });
+  // console.log({ showtimeList });
   const showtimes = filterShowtimesByDay(showtimeList);
   return showtimes.map((ele, idx) => (
     <div

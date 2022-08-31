@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { SeatType } from "../../../enums/common";
 import { resetSelectedSeats } from "../../../store/actions/ticket.action";
 import { formatter } from "../../../utils/helper";
+import BookingBtn from "../BookingBtn/BookingBtn";
 
 export default function TicketBill() {
   const seats = useSelector((state) => state.ticketReducer);
@@ -14,7 +16,9 @@ export default function TicketBill() {
   const filterBySeatType = (seats) => {
     let result = { Vip: [], Standard: [] };
     seats.forEach((ele) => {
-      ele.loaiGhe === "Vip" ? result.Vip.push(ele) : result.Standard.push(ele);
+      ele.loaiGhe === SeatType.Vip
+        ? result.Vip.push(ele)
+        : result.Standard.push(ele);
     });
     return result;
   };
@@ -30,11 +34,11 @@ export default function TicketBill() {
     return calcSubTotalPrice(Vip) + calcSubTotalPrice(Standard);
   };
   const renderSeatPrice = (seats, type) => {
-    console.log("render", seats);
+    // console.log("render", seats);
     return (
       <div className="ticketBill__subTotal py-3" key={type}>
         <h1 className="ticketBill__seatType">
-          {type} ({seats.length} Seats)
+          {type} ({`${seats.length} Seat${seats.length > 1 ? "s" : ""}`})
         </h1>
         <div className="d-flex justify-between">
           <div className="w-1/2">
@@ -62,6 +66,7 @@ export default function TicketBill() {
             {formatter.format(calcTotalPrice(Vip, Standard))}
           </div>
         </div>
+        {seats.selectedSeats.length > 0 && <BookingBtn />}
       </>
     );
   };

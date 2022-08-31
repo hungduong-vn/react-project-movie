@@ -1,16 +1,23 @@
 import { Carousel } from "antd";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { LoadingContext } from "../../../contexts/loading.context";
+import { useAsync } from "../../../hooks/useAsync";
 import { getBanners } from "../../../services/banners";
 import "./HomeCarousel.scss";
 const HomeCarousel = () => {
-  const [banners, setBanners] = useState([]);
-  const fetchBanners = async () => {
-    const result = await getBanners();
-    setBanners(result.data.content);
-  };
-  useEffect(() => {
-    fetchBanners();
-  }, []);
+  // const [banners, setBanners] = useState([]);
+  // const [,setLoadingState] = useContext(LoadingContext);
+  // console.log({context}); 
+  // const fetchBanners = async () => {
+  //   setLoadingState({isLoading: true});
+  //   const result = await getBanners();
+  //   setBanners(result.data.content);
+  //   setLoadingState({isLoading: false});
+  // };
+  // useEffect(() => {
+  //   fetchBanners();
+  // }, []);
+  const { state: banners = [] } = useAsync({ service: getBanners });
   return (
     <Carousel effect="fade">
       {banners.map((ele) => (

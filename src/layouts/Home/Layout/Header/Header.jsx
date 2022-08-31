@@ -1,21 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 export default function Header() {
   window.onscroll = () => {
     const headerEle = document.querySelector(".homeHeader");
     const signUpBtn = document.querySelector(".homeSignUp");
-    if (window.scrollY > 250) {
-      headerEle.classList.add('homeHeader__scrolled');
-      headerEle.classList.remove('py-4');
-      // signUpBtn.classList.remove('px-8');
-      signUpBtn.classList.remove('py-3');
-      signUpBtn.classList.add('py-2');
+    if (window.scrollY > 0) {
+      // console.log('add');
+      headerEle.classList.add("homeHeader__scrolled");
+      headerEle.classList.remove("py-4");
+      signUpBtn.classList.remove("py-3");
+      signUpBtn.classList.add("py-2");
     } else {
-      headerEle.classList.remove('homeHeader__scrolled');
-      headerEle.classList.add('py-4');
-      signUpBtn.classList.add('py-3');
-      signUpBtn.classList.remove('py-2');
+      // console.log('remove');
+      headerEle.classList.remove("homeHeader__scrolled");
+      headerEle.classList.add("py-4");
+      signUpBtn.classList.add("py-3");
+      signUpBtn.classList.remove("py-2");
     }
   };
   const homeLinkClassName =
@@ -29,7 +30,8 @@ export default function Header() {
           className="flex items-center col-span-1"
           to="/"
         >
-          <i className="icofont-movie homeLogo"></i>
+          <span className="material-symbols-outlined homeLogo">stars</span>
+
         </NavLink>
         <ul className="items-stretch hidden space-x-3 lg:flex justify-center col-span-2">
           <li className="flex">

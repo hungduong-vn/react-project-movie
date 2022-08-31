@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { selectSeat } from "../../../store/actions/ticket.action";
 import "./Seat.scss";
 export default function Seat({ seat }) {
-  console.log(seat);
+  // console.log(seat);
   const seatRef = useRef();
   const styleSelectedSeat = () => {
     if (seatRef.current.classList.contains("seat__selecting")) {
