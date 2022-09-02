@@ -31,8 +31,8 @@ export default function Router() {
           path: "/",
           element: <NoAuthGuard />,
           children: [
-            { path: "sign-in", element: <SignIn /> },
-            { path: "sign-up", element: <SignUp /> },
+            { path: "/sign-in", element: <SignIn /> },
+            { path: "/sign-up", element: <SignUp /> },
           ],
         },
         { path: "movie-detail/:movieId", element: <MovieDetail /> },
@@ -40,7 +40,7 @@ export default function Router() {
           path: "/",
           element: <AuthGuard />,
           children: [
-            { path: "ticket-room/:showtimeId", element: <TicketRoom /> },
+            { path: "/ticket-room/:showtimeId", element: <TicketRoom /> },
           ],
         },
       ],
