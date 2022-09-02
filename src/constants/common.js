@@ -7,4 +7,5 @@ const DEFAULT_THEATER = {
   biDanh: "bhd-star-cineplex",
   logo: "https://movienew.cybersoft.edu.vn/hinhanh/bhd-star-cineplex.png",
 };
-export { TOKEN_CYBERSOFT, MOVIE_GROUP_ID, DEFAULT_THEATER };
+const USER_INFO_KEY = "USER_INFO";
+export { TOKEN_CYBERSOFT, MOVIE_GROUP_ID, DEFAULT_THEATER, USER_INFO_KEY };

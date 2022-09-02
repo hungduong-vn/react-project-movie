@@ -1,0 +1,25 @@
+.signIn__header {
+  font-size: 30px;
+  text-align: center;
+  margin: 0;
+  padding-bottom: 3rem;
+}
+.ant-form-item-label {
+  text-align: left !important;
+  font-weight: 500;
+}
+#basic, #nest-messages {
+  margin-top: 24px;
+}
+#normal-login {
+  max-width: 300px;
+}
+#normal-login .login-form-forgot {
+  float: right;
+}
+#normal-login .ant-col-rtl .login-form-forgot {
+  float: left;
+}
+#normal-login .login-form-button {
+  width: 100%;
+}

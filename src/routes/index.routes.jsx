@@ -9,6 +9,8 @@ import SignIn from "../pages/Home/SignIn/SignIn";
 import SignUp from "../pages/Home/SignUp/SignUp";
 import MovieDetail from "../pages/MovieDetail/MovieDetail";
 import TicketRoom from "../pages/TicketRoom/TicketRoom";
+import AuthGuard from "../guards/auth.guards";
+import NoAuthGuard from "../guards/no-auth.guards";
 
 export default function Router() {
   const routing = useRoutes([
@@ -25,10 +27,22 @@ export default function Router() {
           element: <News />,
         },
         { path: "contact", element: <Contact /> },
-        { path: "sign-in", element: <SignIn /> },
-        { path: "sign-up", element: <SignUp /> },
+        {
+          path: "/",
+          element: <NoAuthGuard />,
+          children: [
+            { path: "sign-in", element: <SignIn /> },
+            { path: "sign-up", element: <SignUp /> },
+          ],
+        },
         { path: "movie-detail/:movieId", element: <MovieDetail /> },
-        { path: "ticket-room/:showtimeId", element: <TicketRoom /> },
+        {
+          path: "/",
+          element: <AuthGuard />,
+          children: [
+            { path: "ticket-room/:showtimeId", element: <TicketRoom /> },
+          ],
+        },
       ],
     },
     { path: "/admin", element: <AdminLayout /> },

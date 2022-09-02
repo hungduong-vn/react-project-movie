@@ -1,6 +1,8 @@
-import React, { useRef } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
+import { UserOutlined } from "@ant-design/icons";
 export default function Header() {
   window.onscroll = () => {
     const headerEle = document.querySelector(".homeHeader");
@@ -9,14 +11,50 @@ export default function Header() {
       // console.log('add');
       headerEle.classList.add("homeHeader__scrolled");
       headerEle.classList.remove("py-4");
-      signUpBtn.classList.remove("py-3");
-      signUpBtn.classList.add("py-2");
+      if (signUpBtn) {
+        signUpBtn.classList.remove("py-3");
+        signUpBtn.classList.add("py-2");
+      }
     } else {
       // console.log('remove');
       headerEle.classList.remove("homeHeader__scrolled");
       headerEle.classList.add("py-4");
-      signUpBtn.classList.add("py-3");
-      signUpBtn.classList.remove("py-2");
+      if (signUpBtn) {
+        signUpBtn.classList.add("py-3");
+        signUpBtn.classList.remove("py-2");
+      }
+    }
+  };
+  // const [isSignedIn, setIsSignedIn] = useState(false);
+  const userState = useSelector((state) => state.userReducer);
+  // setIsSignedIn(!!userState.userInfo);
+  const renderAccount = () => {
+    if (userState.userInfo) {
+      return (
+        <div className="d-flex align-items-center justify-end">
+          <h1 className="text-gray-50 font-semibold text-xl leading-10 d-flex align-items-center m-0">
+            {userState.userInfo.taiKhoan}
+            <UserOutlined className="userIcon" />
+          </h1>
+        </div>
+      );
+    } else {
+      return (
+        <div className="items-center flex-shrink-0 hidden lg:flex col-span-1">
+          <NavLink
+            to="sign-in"
+            className="self-center px-8 py-3 rounded homeSignIn font-semibold text-gray-50"
+          >
+            Sign in
+          </NavLink>
+          <NavLink
+            to="sign-up"
+            className="self-center px-8 py-3 font-semibold rounded homeSignUp"
+          >
+            Sign up
+          </NavLink>
+        </div>
+      );
     }
   };
   const homeLinkClassName =
@@ -31,7 +69,6 @@ export default function Header() {
           to="/"
         >
           <span className="material-symbols-outlined homeLogo">stars</span>
-
         </NavLink>
         <ul className="items-stretch hidden space-x-3 lg:flex justify-center col-span-2">
           <li className="flex">
@@ -74,20 +111,7 @@ export default function Header() {
             </NavLink>
           </li>
         </ul>
-        <div className="items-center flex-shrink-0 hidden lg:flex col-span-1">
-          <NavLink
-            to="sign-in"
-            className="self-center px-8 py-3 rounded homeSignIn font-semibold text-gray-50"
-          >
-            Sign in
-          </NavLink>
-          <NavLink
-            to="sign-up"
-            className="self-center px-8 py-3 font-semibold rounded homeSignUp"
-          >
-            Sign up
-          </NavLink>
-        </div>
+        {renderAccount()}
         <button className="p-4 lg:hidden">
           <svg
             xmlns="http://www.w3.org/2000/svg"

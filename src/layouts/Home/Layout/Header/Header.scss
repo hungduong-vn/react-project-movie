@@ -53,3 +53,17 @@
     background-color: white;
   }
 }
+.userIcon {
+  color: "white";
+  border-radius: 50%;
+  border: solid 3px gainsboro;
+  padding: 6px;
+  margin-left: 10px;
+  font-weight: 500;
+  font-size: 1.75rem;
+  cursor: pointer;
+  &:hover {
+    background-color: gainsboro;
+    color: white;
+  }
+}
