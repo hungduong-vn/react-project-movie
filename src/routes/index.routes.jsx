@@ -1,16 +1,16 @@
-import React from "react";
+import React, { lazy } from "react";
 import { useRoutes } from "react-router-dom";
-import AdminLayout from "../layouts/Admin/admin.layout";
-import HomeLayout from "../layouts/Home/home.layout";
-import HomeContent from "../pages/Home/HomeContent/HomeContent";
-import Contact from "../pages/Home/Contact/Contact";
-import News from "../pages/Home/News/News";
-import SignIn from "../pages/Home/SignIn/SignIn";
-import SignUp from "../pages/Home/SignUp/SignUp";
-import MovieDetail from "../pages/MovieDetail/MovieDetail";
-import TicketRoom from "../pages/TicketRoom/TicketRoom";
-import AuthGuard from "../guards/auth.guards";
-import NoAuthGuard from "../guards/no-auth.guards";
+const AdminLayout = lazy(() => import("../layouts/Admin/admin.layout"));
+const HomeLayout = lazy(() => import("../layouts/Home/home.layout"));
+const HomeContent = lazy(() => import("../pages/Home/HomeContent/HomeContent"));
+const Contact = lazy(() => import("../pages/Home/Contact/Contact"));
+const News = lazy(() => import("../pages/Home/News/News"));
+const SignIn = lazy(() => import("../pages/Home/SignIn/SignIn"));
+const SignUp = lazy(() => import("../pages/Home/SignUp/SignUp"));
+const MovieDetail = lazy(() => import("../pages/MovieDetail/MovieDetail"));
+const TicketRoom = lazy(() => import("../pages/TicketRoom/TicketRoom"));
+const AuthGuard = lazy(() => import("../guards/auth.guards"));
+const NoAuthGuard = lazy(() => import("../guards/no-auth.guards"));
 
 export default function Router() {
   const routing = useRoutes([

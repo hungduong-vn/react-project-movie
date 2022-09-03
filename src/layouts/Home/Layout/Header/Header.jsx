@@ -1,8 +1,10 @@
 import React from "react";
-import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./Header.scss";
 import { UserOutlined } from "@ant-design/icons";
+import { USER_INFO_KEY } from "../../../../constants/common";
+import { setUserAction } from "../../../../store/actions/user.action";
 export default function Header() {
   window.onscroll = () => {
     const headerEle = document.querySelector(".homeHeader");
@@ -11,29 +13,39 @@ export default function Header() {
       // console.log('add');
       headerEle.classList.add("homeHeader__scrolled");
       headerEle.classList.remove("py-4");
-      if (signUpBtn) {
-        signUpBtn.classList.remove("py-3");
-        signUpBtn.classList.add("py-2");
-      }
+      // signUpBtn.classList.remove("py-3");
+      signUpBtn.classList.add("homeSignUp__scrolled");
     } else {
       // console.log('remove');
       headerEle.classList.remove("homeHeader__scrolled");
       headerEle.classList.add("py-4");
-      if (signUpBtn) {
-        signUpBtn.classList.add("py-3");
-        signUpBtn.classList.remove("py-2");
-      }
+      // signUpBtn.classList.add("py-3");
+      signUpBtn.classList.remove("homeSignUp__scrolled");
     }
   };
   // const [isSignedIn, setIsSignedIn] = useState(false);
   const userState = useSelector((state) => state.userReducer);
   // setIsSignedIn(!!userState.userInfo);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    console.log("LOGGING OUT...");
+    localStorage.removeItem(USER_INFO_KEY);
+    dispatch(setUserAction(null));
+    navigate("/");
+  };
   const renderAccount = () => {
     if (userState.userInfo) {
       return (
         <div className="d-flex align-items-center justify-end">
           <h1 className="text-gray-50 font-semibold text-xl leading-10 d-flex align-items-center m-0">
-            {userState.userInfo.taiKhoan}
+            <button
+              className="self-center font-semibold rounded homeSignUp mr-2"
+              onClick={handleLogOut}
+            >
+              Log Out
+            </button>
+            {"Hello " + userState.userInfo.taiKhoan}
             <UserOutlined className="userIcon" />
           </h1>
         </div>
@@ -49,7 +61,7 @@ export default function Header() {
           </NavLink>
           <NavLink
             to="sign-up"
-            className="self-center px-8 py-3 font-semibold rounded homeSignUp"
+            className="self-center font-semibold rounded homeSignUp"
           >
             Sign up
           </NavLink>

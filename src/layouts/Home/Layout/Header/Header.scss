@@ -48,17 +48,23 @@
   background-color: rgb(220, 220, 220);
   color: black;
   transition: all 0.5s;
+  padding: 1rem 2rem;
+  font-size: 0.875rem;
+  line-height: normal;
   &:hover {
     color: black;
     background-color: white;
   }
+}
+.homeSignUp__scrolled {
+  padding: 0.75rem 2rem;
 }
 .userIcon {
   color: "white";
   border-radius: 50%;
   border: solid 3px gainsboro;
   padding: 6px;
-  margin-left: 10px;
+  margin: 0px 10px;
   font-weight: 500;
   font-size: 1.75rem;
   cursor: pointer;

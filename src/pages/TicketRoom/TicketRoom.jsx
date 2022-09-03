@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import RoomLayout from "../../components/TicketRoom/RoomLayout/RoomLayout";
 import TicketInfo from "../../components/TicketRoom/TicketsInfo/TicketInfo";
@@ -16,10 +17,11 @@ export default function TicketRoom() {
   // useEffect(() => {
   //   fetchTicketRoom();
   // }, []);
+  const userState = useSelector((state) => state.userReducer);
   const { state: ticketRoom } = useAsync({
     service: () => getTicketRoomApi(showtimeId),
     deps: [showtimeId],
-    condition: !!showtimeId,
+    condition: !!showtimeId && !!userState.userInfo,
   });
   console.log({ ticketRoom });
   return (
