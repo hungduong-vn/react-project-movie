@@ -7,8 +7,10 @@ export const getTicketRoomApi = (showtimeId) => {
   });
 };
 
-// export bookingApi = (data) => {
-//   return request({
-//     url: ""
-//   })
-// }
+export const bookingApi = (data) => {
+  return request({
+    url: "/QuanLyDatVe/DatVe",
+    method: "post",
+    data,
+  });
+};

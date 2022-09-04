@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { selectSeat } from "../../../store/actions/ticket.action";
 import "./Seat.scss";
@@ -11,9 +11,12 @@ export default function Seat({ seat }) {
     } else {
       seatRef.current.classList.add("seat__selecting");
     }
-  }
+  };
   const dispatch = useDispatch();
   const handleClick = () => {
+    // if (seat.daDat) {
+    //   return;
+    // }
     styleSelectedSeat();
     // console.log(seat.tenGhe);
     dispatch(selectSeat(seat));
@@ -23,7 +26,7 @@ export default function Seat({ seat }) {
       <div
         className={`seat seatHoverable my-2${
           seat.loaiGhe === "Vip" ? " seat__vip" : ""
-        }`}
+        }${seat.daDat ? " seat__taken" : ""}`}
         ref={seatRef}
         onClick={handleClick}
       ></div>

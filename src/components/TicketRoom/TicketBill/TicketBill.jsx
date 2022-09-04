@@ -66,7 +66,7 @@ export default function TicketBill() {
             {formatter.format(calcTotalPrice(Vip, Standard))}
           </div>
         </div>
-        {seats.selectedSeats.length > 0 && <BookingBtn />}
+        {seats.selectedSeats.length > 0 && <BookingBtn selectedSeats={seats.selectedSeats}/>}
       </>
     );
   };

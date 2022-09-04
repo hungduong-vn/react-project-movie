@@ -33,6 +33,7 @@
     hsla(0, 0%, 60%, 0.6) 20px
   );
   cursor: not-allowed;
+  pointer-events: none;
 }
 .seat,
 .rowName {
