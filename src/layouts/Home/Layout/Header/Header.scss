@@ -2,12 +2,14 @@
   background-color: grey;
   z-index: 100;
   transition: all 0.5s;
+  padding: 1rem;
 }
 .homeHeader__scrolled {
   position: sticky;
   background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   left: 0;
+  padding: 0 1rem; 
   // .homeSignUp {
 
   // }

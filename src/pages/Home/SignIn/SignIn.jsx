@@ -74,7 +74,7 @@ const SignIn = () => {
               />
             </Form.Item>
             <Form.Item>
-              <Form.Item name="remember" valuePropName="checked" noStyle>
+              <Form.Item name="remember" valuePropName="" noStyle>
                 <Checkbox>Remember me</Checkbox>
               </Form.Item>
             </Form.Item>

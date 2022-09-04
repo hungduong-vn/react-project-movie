@@ -1,10 +1,9 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import "./Header.scss";
-import { UserOutlined } from "@ant-design/icons";
-import { USER_INFO_KEY } from "../../../../constants/common";
-import { setUserAction } from "../../../../store/actions/user.action";
+import UserHeaderSignedIn from "./UserHeaderSignedIn";
+import UserSignIn from "./UserSignIn";
 export default function Header() {
   window.onscroll = () => {
     const headerEle = document.querySelector(".homeHeader");
@@ -12,67 +11,25 @@ export default function Header() {
     if (window.scrollY > 0) {
       // console.log('add');
       headerEle.classList.add("homeHeader__scrolled");
-      headerEle.classList.remove("py-4");
-      // signUpBtn.classList.remove("py-3");
       signUpBtn.classList.add("homeSignUp__scrolled");
     } else {
       // console.log('remove');
       headerEle.classList.remove("homeHeader__scrolled");
-      headerEle.classList.add("py-4");
-      // signUpBtn.classList.add("py-3");
       signUpBtn.classList.remove("homeSignUp__scrolled");
     }
   };
-  // const [isSignedIn, setIsSignedIn] = useState(false);
   const userState = useSelector((state) => state.userReducer);
-  // setIsSignedIn(!!userState.userInfo);
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const handleLogOut = () => {
-    console.log("LOGGING OUT...");
-    localStorage.removeItem(USER_INFO_KEY);
-    dispatch(setUserAction(null));
-    navigate("/");
-  };
   const renderAccount = () => {
     if (userState.userInfo) {
-      return (
-        <div className="d-flex align-items-center justify-end">
-          <h1 className="text-gray-50 font-semibold text-xl leading-10 d-flex align-items-center m-0">
-            <button
-              className="self-center font-semibold rounded homeSignUp mr-2"
-              onClick={handleLogOut}
-            >
-              Log Out
-            </button>
-            {"Hello " + userState.userInfo.taiKhoan}
-            <UserOutlined className="userIcon" />
-          </h1>
-        </div>
-      );
+      return <UserHeaderSignedIn userState={userState} />;
     } else {
-      return (
-        <div className="items-center flex-shrink-0 hidden lg:flex col-span-1">
-          <NavLink
-            to="sign-in"
-            className="self-center px-8 py-3 rounded homeSignIn font-semibold text-gray-50"
-          >
-            Sign in
-          </NavLink>
-          <NavLink
-            to="sign-up"
-            className="self-center font-semibold rounded homeSignUp"
-          >
-            Sign up
-          </NavLink>
-        </div>
-      );
+      return <UserSignIn />;
     }
   };
   const homeLinkClassName =
     "flex items-center px-4 -mb-1 border-b-2 border-transparent homeLink";
   return (
-    <header className="px-4 py-4 bg-gray-100 text-gray-800 w-100 homeHeader">
+    <header className="bg-gray-100 text-gray-800 w-100 homeHeader">
       <div className="container grid grid-cols-4 h-16 mx-auto">
         <NavLink
           rel="noopener noreferrer"
