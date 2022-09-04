@@ -10,14 +10,16 @@ export const formatDate = (date, formatDate = "DD/MM HH:mm") => {
 // Output: object key=day, value=[time1, time2...]
 export const filterShowtimesByDay = (showtimes) => {
   // console.log('FilterShowtimes',_.map(showtimes, _.property("ngayChieuGioChieu")));
+  const showtimeIds = _.map(showtimes, _.property("maLichChieu"));
+  console.log({ showtimeIds });
   const formatTime = _.map(showtimes, _.property("ngayChieuGioChieu"));
-  const timeList = formatTime.map((ele) => {
+  const timeList = formatTime.map((ele, idx) => {
     const date = formatDate(ele).split(" ");
-    return { date: date[0], time: date[1] };
+    return { date: date[0], time: { showtime: date[1], id: showtimeIds[idx] } };
   });
-  // console.log({ timeList });
+  console.log({ timeList });
   let dateList = _.groupBy(timeList, "date");
-  // console.log({ dateList });
+  console.log({ dateList });
   const result = [];
   for (const i in dateList) {
     dateList[i] = dateList[i].map((ele) => ele.time).sort();
@@ -27,9 +29,9 @@ export const filterShowtimesByDay = (showtimes) => {
   return result;
 };
 
-export const formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'VND',
+export const formatter = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "VND",
 
   // These options are needed to round to whole numbers if that's what you want.
   //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)

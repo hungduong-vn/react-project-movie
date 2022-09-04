@@ -20,9 +20,9 @@ export const renderShowtimes = (showtimeList) => {
         // console.log("maLichChieu", showtimeList[idxTime].maLichChieu);
         return (
           <ShowtimeBtn
-            time={time}
-            key={idxTime}
-            showtimeId={showtimeList[idxTime].maLichChieu}
+            time={time.showtime}
+            key={time.id}
+            showtimeId={time.id}
           />
         );
       })}
