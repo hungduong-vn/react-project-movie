@@ -1,0 +1,13 @@
+.label_title {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 200px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    }
+
+th{
+    width: 20%;
+}

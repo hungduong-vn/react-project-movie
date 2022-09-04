@@ -8,19 +8,24 @@ const { TabPane } = Tabs;
 export const renderShowtimes = (showtimeList) => {
   // console.log({ showtimeList });
   const showtimes = filterShowtimesByDay(showtimeList);
+  console.log({ showtimes });
+  console.log({showtimeList});
   return showtimes.map((ele, idx) => (
     <div
       className={`showtime py-3${idx === 0 ? " firstShow" : ""}`}
       key={ele.date}
     >
       <h1 className="pl-1">{ele.date}</h1>
-      {ele.timeList.map((time, idxTime) => (
-        <ShowtimeBtn
-          time={time}
-          key={idxTime}
-          showtimeId={showtimeList[idxTime].maLichChieu}
-        />
-      ))}
+      {ele.timeList.map((time, idxTime) => {
+        // console.log("maLichChieu", showtimeList[idxTime].maLichChieu);
+        return (
+          <ShowtimeBtn
+            time={time}
+            key={idxTime}
+            showtimeId={showtimeList[idxTime].maLichChieu}
+          />
+        );
+      })}
     </div>
   ));
 };

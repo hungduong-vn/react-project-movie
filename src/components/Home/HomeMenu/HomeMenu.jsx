@@ -19,7 +19,7 @@ const HomeMenu = () => {
   const renderCinema = () => {
     console.log(state.cinema);
     return state.cinema?.map((ele) => {
-      // console.log({ ele });
+      console.log({ ele });
       return (
         <TabPane tab={<BrandTabPane brands={ele} />} key={ele.maHeThongRap}>
           <CinemaTabs cinemaList={ele.lstCumRap} logo={ele.logo} />

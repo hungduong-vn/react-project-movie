@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-export default function UserSignIn() {
+export default function UserHeaderSignIn() {
   return (
     <div className="items-center flex-shrink-0 hidden lg:flex col-span-1">
       <NavLink

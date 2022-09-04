@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import "./Header.scss";
 import UserHeaderSignedIn from "./UserHeaderSignedIn";
-import UserSignIn from "./UserSignIn";
+import UserHeaderSignIn from "./UserHeaderSignIn";
 export default function Header() {
   window.onscroll = () => {
     const headerEle = document.querySelector(".homeHeader");
@@ -20,11 +20,11 @@ export default function Header() {
   };
   const userState = useSelector((state) => state.userReducer);
   const renderAccount = () => {
-    if (userState.userInfo) {
-      return <UserHeaderSignedIn userState={userState} />;
-    } else {
-      return <UserSignIn />;
-    }
+    return userState.userInfo ? (
+      <UserHeaderSignedIn userState={userState} />
+    ) : (
+      <UserHeaderSignIn />
+    );
   };
   const homeLinkClassName =
     "flex items-center px-4 -mb-1 border-b-2 border-transparent homeLink";

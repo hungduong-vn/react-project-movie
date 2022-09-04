@@ -1,2 +1,7 @@
 export const GET_USER = "GET_USER";
 export const SET_USER = "SET_USER";
+const USER_UPLOAD = "USER_UPLOAD";
+
+const USER_SELECTED = "USER_SELECTED";
+
+export {USER_SELECTED, USER_UPLOAD};

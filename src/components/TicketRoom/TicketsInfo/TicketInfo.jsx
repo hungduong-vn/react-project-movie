@@ -2,7 +2,7 @@ import React from "react";
 import TicketBill from "../TicketBill/TicketBill";
 
 export default function TicketInfo({ info }) {
-  console.log({ info });
+  // console.log({ info });
   return (
     <div className="py-5">
       <div className="card p-3">

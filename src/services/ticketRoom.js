@@ -6,3 +6,9 @@ export const getTicketRoomApi = (showtimeId) => {
     method: "GET",
   });
 };
+
+// export bookingApi = (data) => {
+//   return request({
+//     url: ""
+//   })
+// }

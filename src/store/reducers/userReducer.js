@@ -1,5 +1,5 @@
 import { USER_INFO_KEY } from "../../constants/common";
-import { GET_USER, SET_USER } from "../types/user.type";
+import { GET_USER, SET_USER, USER_SELECTED, USER_UPLOAD } from "../types/user.type";
 
 let userInfo = localStorage.getItem(USER_INFO_KEY);
 if(userInfo) {
@@ -13,10 +13,19 @@ export const userReducer = (state = DEFAULT_STATE, { type, payload }) => {
     case GET_USER:
       return { ...state };
     case SET_USER:
-      
       state.userInfo = payload;
       console.log("Set User to:", state.userInfo);
       return { ...state };
+      case USER_UPLOAD:{
+        state.userInfo = payload;
+
+        return {...state};
+    }
+    case USER_SELECTED: {
+        state.userSelected = payload;
+
+        return {...state};
+    }
     default:
       return state;
   }
