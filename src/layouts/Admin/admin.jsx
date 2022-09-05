@@ -5,7 +5,7 @@ import {
   TeamOutlined,
   UserOutlined,
 } from "@ant-design/icons";
-import { Breadcrumb, Button, Layout, Menu } from "antd";
+import { Breadcrumb, Button, Layout, Menu, message } from "antd";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -60,7 +60,7 @@ export default function AdminLayout() {
       type: "USER_UPLOAD",
       payload: null,
     });
-
+    message.success("Logged Out Successfully!")
     navigate("/");
   };
   return (
