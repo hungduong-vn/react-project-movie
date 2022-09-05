@@ -17,10 +17,15 @@ const SignIn = () => {
     try {
       const result = await signInApi(values);
       // console.log({ result });
-      dispatch(setUserAction(result.data.content));
-      localStorage.setItem(USER_INFO_KEY, JSON.stringify(result.data.content));
+      const submitSignInData = {
+        ...result.data.content,
+        matKhau: values.matKhau,
+      };
+      console.log({ submitSignInData });
+      dispatch(setUserAction(submitSignInData));
+      localStorage.setItem(USER_INFO_KEY, JSON.stringify(submitSignInData));
       setShowError("d-none");
-      message.success(`Welcome Back ${values.taiKhoan}`)
+      message.success(`Welcome Back ${values.taiKhoan}`);
       navigate("/");
     } catch (error) {
       console.log(error);

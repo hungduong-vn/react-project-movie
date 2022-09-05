@@ -32,16 +32,15 @@ export default function UserHeaderSignedIn({ userState }) {
           <UserOutlined className="userIcon dropbtn" />
           <div className="dropdown-content">
             <div className="userIcon__text">
-              <SettingOutlined className="mr-2 logOutIcon" />
-              <Link to={"/"}>Account</Link>
+              <Link to="/user-account">
+                <SettingOutlined className="mr-2 logOutIcon" />
+                Account
+              </Link>
             </div>
             <div className="userIcon__text" onClick={handleLogOut}>
               <LogoutOutlined className="mr-2 logOutIcon" />
               Log Out
             </div>
-            {/* <button className="self-center font-semibold rounded homeSignUp mr-2" onClick={handleLogOut}>
-              Log Out
-            </button> */}
           </div>
         </div>
       </h1>

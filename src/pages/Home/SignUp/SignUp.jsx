@@ -1,4 +1,4 @@
-import { Button, Col, Form, Input, message } from "antd";
+import { Button, Col, Form, Input, message, Row } from "antd";
 import React from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import { MOVIE_GROUP_ID } from "../../../constants/common";
@@ -32,7 +32,8 @@ const SignUp = () => {
     // console.log(values);
     const submitSignUpData = { ...values.user, maNhom: MOVIE_GROUP_ID };
     console.log({ submitSignUpData });
-    await signUpApi(submitSignUpData);
+    const result = await signUpApi(submitSignUpData);
+    console.log("Sign Up result", result.data.content);
     message.success("Sign Up Successfully!");
     navigate("/sign-in");
   };

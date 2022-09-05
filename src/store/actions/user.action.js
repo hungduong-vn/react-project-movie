@@ -1,4 +1,4 @@
-import { SET_USER } from "../types/user.type";
+import { SET_USER, UPDATE_USER } from "../types/user.type";
 import { USER_SELECTED } from "../types/user.type";
 
 export const setUserAction = (data) => ({
@@ -12,4 +12,9 @@ export const setUserInfoAction = (data) => {
     paload: data,
   };
 };
-
+export const updateUserInfoAction = (data) => {
+  return {
+    type: UPDATE_USER,
+    payload: data,
+  };
+};

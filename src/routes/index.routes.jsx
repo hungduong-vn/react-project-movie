@@ -1,5 +1,6 @@
 import React, { lazy } from "react";
 import { useRoutes } from "react-router-dom";
+const UserAccount = lazy(() => import("../pages/UserAccount/UserAccount"));
 const ManagerGuard = lazy(() => import("../guards/manager.guard"));
 const AddFilm = lazy(() => import("../pages/Admin/addFilm/addFilm"));
 const AddShowTime = lazy(() =>
@@ -51,6 +52,7 @@ export default function Router() {
           element: <AuthGuard />,
           children: [
             { path: "/ticket-room/:showtimeId", element: <TicketRoom /> },
+            { path: "/user-account", element: <UserAccount /> },
           ],
         },
       ],

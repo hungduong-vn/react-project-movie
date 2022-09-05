@@ -2,6 +2,7 @@ import { USER_INFO_KEY } from "../../constants/common";
 import {
   GET_USER,
   SET_USER,
+  UPDATE_USER,
   USER_SELECTED,
   USER_UPLOAD,
 } from "../types/user.type";
@@ -20,6 +21,10 @@ export const userReducer = (state = DEFAULT_STATE, { type, payload }) => {
     case SET_USER:
       state.userInfo = payload;
       console.log("Set User to:", state.userInfo);
+      return { ...state };
+    case UPDATE_USER:
+      state.userInfo = payload;
+      console.log("Update User to: ", state.userInfo);
       return { ...state };
     case USER_UPLOAD: {
       state.userInfo = payload;

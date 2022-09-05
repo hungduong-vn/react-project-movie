@@ -14,3 +14,17 @@ export const signUpApi = (data) => {
     data,
   });
 };
+export const UpdateUserInfoApi = (data) => {
+  return request({
+    url: "QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+    method: "PUT",
+    data,
+  });
+};
+
+export const getUserInfoApi = (username) => {
+  return request({
+    url: `QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${username}`,
+    method: "POST",
+  });
+};
