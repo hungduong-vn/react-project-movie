@@ -29,3 +29,11 @@ export const fetchSearchUserApi = (tuKhoa) => {
     method: "GET",
   });
 };
+
+export const addUserApi = (data) => {
+  return request({
+    url: `/QuanLyNguoiDung/ThemNguoiDung`,
+    method: "POST",
+    data,
+  });
+};

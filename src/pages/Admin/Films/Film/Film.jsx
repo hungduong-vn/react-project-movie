@@ -2,9 +2,6 @@ import React, { useState } from 'react'
 import { AudioOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
 import { Button } from 'antd';
-import axios from "axios";
-
-import { useEffect } from 'react';
 import './index.scss'
 // import FilmTable from '../../../modules/film-table/film-table';
 import { useNavigate } from 'react-router-dom';
@@ -20,12 +17,17 @@ const suffix = (
     />
 );
 
-const onSearch = (value) => console.log(value);
+
 
 export default function Film() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const [text, searchText] = useState();
 
-    
+    const onSearch = (value) => {
+        searchText(value);
+        
+    };
+
     return (
         <div>
             <h2 className='text-info'>Film management</h2>
@@ -36,9 +38,15 @@ export default function Film() {
                 enterButton="Search"
                 size="large"
                 onSearch={onSearch}
+                onPressEnter={(e) => {
+                    onSearch(e.target.defaultValue)
+                  }}
+                onChange={(e) => {
+                    onSearch(e.target.value)
+                }}  
             />
             <div>
-                <FilmTable/>
+                <FilmTable text={text}/>
             </div>
         </div>
     )
