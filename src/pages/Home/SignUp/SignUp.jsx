@@ -1,7 +1,8 @@
-import { Button, Col, Form, Input } from "antd";
+import { Button, Col, Form, Input, message, Row } from "antd";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { MOVIE_GROUP_ID } from "../../../constants/common";
+import { signUpApi } from "../../../services/user";
 const layout = {
   labelCol: {
     span: 6,
@@ -26,8 +27,15 @@ const validateMessages = {
 /* eslint-enable no-template-curly-in-string */
 
 const SignUp = () => {
-  const onFinish = (values) => {
-    console.log(values);
+  const navigate = useNavigate();
+  const onFinish = async (values) => {
+    // console.log(values);
+    const submitSignUpData = { ...values.user, maNhom: MOVIE_GROUP_ID };
+    console.log({ submitSignUpData });
+    const result = await signUpApi(submitSignUpData);
+    console.log("Sign Up result", result.data.content);
+    message.success("Sign Up Successfully!");
+    navigate("/sign-in");
   };
 
   return (

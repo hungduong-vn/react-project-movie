@@ -7,3 +7,24 @@ export const signInApi = (data) => {
     data,
   });
 };
+export const signUpApi = (data) => {
+  return request({
+    url: "QuanLyNguoiDung/DangKy",
+    method: "POST",
+    data,
+  });
+};
+export const UpdateUserInfoApi = (data) => {
+  return request({
+    url: "QuanLyNguoiDung/CapNhatThongTinNguoiDung",
+    method: "PUT",
+    data,
+  });
+};
+
+export const getUserInfoApi = (username) => {
+  return request({
+    url: `QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${username}`,
+    method: "POST",
+  });
+};

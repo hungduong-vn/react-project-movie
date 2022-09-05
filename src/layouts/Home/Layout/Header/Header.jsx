@@ -11,11 +11,15 @@ export default function Header() {
     if (window.scrollY > 0) {
       // console.log('add');
       headerEle.classList.add("homeHeader__scrolled");
-      signUpBtn.classList.add("homeSignUp__scrolled");
+      if (signUpBtn) {
+        signUpBtn.classList.add("homeSignUp__scrolled");
+      }
     } else {
       // console.log('remove');
       headerEle.classList.remove("homeHeader__scrolled");
-      signUpBtn.classList.remove("homeSignUp__scrolled");
+      if (signUpBtn) {
+        signUpBtn.classList.remove("homeSignUp__scrolled");
+      }
     }
   };
   const userState = useSelector((state) => state.userReducer);

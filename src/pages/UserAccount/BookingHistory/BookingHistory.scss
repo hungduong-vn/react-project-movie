@@ -1,0 +1,13 @@
+.bookingHistory {
+  overflow-y: scroll;
+  max-height: 600px;
+}
+.order {
+  border-bottom: 1px solid #f0f0f1;
+  padding: 1rem 0;
+}
+.order__left {
+  border-right: 1px solid #f0f0f1;
+  display: flex;
+  align-items: center;
+}

@@ -1,5 +1,5 @@
 import { LockOutlined, UserOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, message } from "antd";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
@@ -16,10 +16,16 @@ const SignIn = () => {
     console.log("Sign In Values: ", values);
     try {
       const result = await signInApi(values);
-      console.log({ result });
-      dispatch(setUserAction(result.data.content));
-      localStorage.setItem(USER_INFO_KEY, JSON.stringify(result.data.content));
+      // console.log({ result });
+      const submitSignInData = {
+        ...result.data.content,
+        matKhau: values.matKhau,
+      };
+      console.log({ submitSignInData });
+      dispatch(setUserAction(submitSignInData));
+      localStorage.setItem(USER_INFO_KEY, JSON.stringify(submitSignInData));
       setShowError("d-none");
+      message.success(`Welcome Back ${values.taiKhoan}`);
       navigate("/");
     } catch (error) {
       console.log(error);
