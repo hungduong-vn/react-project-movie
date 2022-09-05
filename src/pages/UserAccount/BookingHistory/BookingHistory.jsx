@@ -18,7 +18,7 @@ export default function BookingHistory() {
       return (
         <div className="row order" key={order.maVe}>
           <div className="col-4 order__left">
-            <img src={order.hinhAnh} alt="" className="img-fluid w-1/3" />
+            <img src={order.hinhAnh} alt="" className="order__poster" />
             <div className="order__left__text ml-2">
               <p>Order #{order.maVe}</p>
               <h1 className="film__name">{order.tenPhim}</h1>
