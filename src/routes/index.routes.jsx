@@ -1,5 +1,6 @@
 import React, { lazy } from "react";
 import { useRoutes } from "react-router-dom";
+import UserRegister from "../pages/Admin/userRegister/userRegister";
 const ManagerGuard = lazy(() => import("../guards/manager.guard"));
 const AddFilm = lazy(() => import("../pages/Admin/addFilm/addFilm"));
 const AddShowTime = lazy(() =>
@@ -70,6 +71,10 @@ export default function Router() {
             {
               path: "user/editUser",
               element: <UserEdit />,
+            },
+            {
+              path: "user/register",
+              element: <UserRegister />,
             },
             {
               path: "film/:filmId/update",
