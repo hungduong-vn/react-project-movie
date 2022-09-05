@@ -11,15 +11,15 @@ export const formatDate = (date, formatDate = "DD/MM HH:mm") => {
 export const filterShowtimesByDay = (showtimes) => {
   // console.log('FilterShowtimes',_.map(showtimes, _.property("ngayChieuGioChieu")));
   const showtimeIds = _.map(showtimes, _.property("maLichChieu"));
-  console.log({ showtimeIds });
+  // console.log({ showtimeIds });
   const formatTime = _.map(showtimes, _.property("ngayChieuGioChieu"));
   const timeList = formatTime.map((ele, idx) => {
     const date = formatDate(ele).split(" ");
     return { date: date[0], time: { showtime: date[1], id: showtimeIds[idx] } };
   });
-  console.log({ timeList });
+  // console.log({ timeList });
   let dateList = _.groupBy(timeList, "date");
-  console.log({ dateList });
+  // console.log({ dateList });
   const result = [];
   for (const i in dateList) {
     dateList[i] = dateList[i].map((ele) => ele.time).sort();

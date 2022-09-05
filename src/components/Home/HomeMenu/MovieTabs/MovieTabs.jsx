@@ -6,10 +6,9 @@ import ShowtimeBtn from "../ShowtimeBtn/ShowtimeBtn";
 
 const { TabPane } = Tabs;
 export const renderShowtimes = (showtimeList) => {
-  // console.log({ showtimeList });
   const showtimes = filterShowtimesByDay(showtimeList);
-  console.log({ showtimes });
-  console.log({showtimeList});
+  // console.log({ showtimes });
+  // console.log({showtimeList});
   return showtimes.map((ele, idx) => (
     <div
       className={`showtime py-3${idx === 0 ? " firstShow" : ""}`}
