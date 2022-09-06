@@ -3,9 +3,13 @@ import React from "react";
 import { useState } from "react";
 import { EditOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
-import { getUserInfoApi, UpdateUserInfoApi } from "../../../services/user";
+import {
+  getUserInfoApi,
+  signInApi,
+  UpdateUserInfoApi,
+} from "../../../services/user";
 import { MOVIE_GROUP_ID, USER_INFO_KEY } from "../../../constants/common";
-import { updateUserInfoAction } from "../../../store/actions/user.action";
+import { setUserAction, updateUserInfoAction } from "../../../store/actions/user.action";
 
 const layout = {
   labelCol: {
@@ -29,9 +33,27 @@ const validateMessages = {
   },
 };
 /* eslint-enable no-template-curly-in-string */
-export default function UserInfo() {
+export default function UserInfo({ userProfile }) {
   const [isEdit, setIsEdit] = useState(false);
   const dispatch = useDispatch();
+  const {
+    matKhau,
+    hoTen,
+    soDT,
+    email,
+    taiKhoan,
+    maLoaiNguoiDung,
+    accessToken,
+  } = userProfile;
+  const initialValues = {
+    user: {
+      matKhau,
+      hoTen,
+      soDT,
+      email,
+      taiKhoan,
+    },
+  };
   const onFinish = async (values) => {
     // console.log(values);
     const submitUpdateUserInfo = {
@@ -42,43 +64,16 @@ export default function UserInfo() {
     console.log({ submitUpdateUserInfo });
     const result = await UpdateUserInfoApi(submitUpdateUserInfo);
     console.log("Update User result: ", result.data.content);
-    dispatch(
-      updateUserInfoAction({
-        ...submitUpdateUserInfo,
-        accessToken,
-      })
-    );
+    const signInResult = await signInApi({ taiKhoan, matKhau });
     localStorage.setItem(
       USER_INFO_KEY,
-      JSON.stringify({ ...submitUpdateUserInfo, accessToken })
+      JSON.stringify(signInResult.data.content)
     );
+    dispatch(setUserAction(signInResult.data.content));
     setIsEdit(false);
     message.success("Successfully Updated!");
   };
-  const userInfo = useSelector((state) => state.userReducer.userInfo);
-  const {
-    matKhau,
-    hoTen,
-    soDT,
-    email,
-    taiKhoan,
-    maLoaiNguoiDung,
-    accessToken,
-  } = userInfo;
-  const initialValues = {
-    user: {
-      matKhau,
-      hoTen,
-      soDT,
-      email,
-      taiKhoan,
-    },
-  };
-  const handleGetUser = async () => {
-    const result = await getUserInfoApi(taiKhoan);
-    console.log("Get User info: ", result.data.content);
-  };
-  // console.log({userState});
+
   return (
     <>
       <div className="d-flex justify-end mb-4">
@@ -182,9 +177,9 @@ export default function UserInfo() {
           </Col>
         </Row>
       </Form>
-      <button className="btn btn-outline-dark" onClick={handleGetUser}>
+      {/* <button className="btn btn-outline-dark" onClick={handleGetUser}>
         Get User
-      </button>
+      </button> */}
     </>
   );
 }

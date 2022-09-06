@@ -22,9 +22,9 @@ export const UpdateUserInfoApi = (data) => {
   });
 };
 
-export const getUserInfoApi = (username) => {
+export const getUserInfoApi = () => {
   return request({
-    url: `QuanLyNguoiDung/LayThongTinNguoiDung?taiKhoan=${username}`,
+    url: `QuanLyNguoiDung/ThongTinTaiKhoan`,
     method: "POST",
   });
 };

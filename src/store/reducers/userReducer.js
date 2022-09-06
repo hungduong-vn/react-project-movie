@@ -23,8 +23,8 @@ export const userReducer = (state = DEFAULT_STATE, { type, payload }) => {
       console.log("Set User to:", state.userInfo);
       return { ...state };
     case UPDATE_USER:
-      state.userInfo = payload;
-      console.log("Update User to: ", state.userInfo);
+      state.userProfile = payload;
+      console.log("Update User to: ", state.userProfile);
       return { ...state };
     case USER_UPLOAD: {
       state.userInfo = payload;

@@ -13,19 +13,17 @@ const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const onFinish = async (values) => {
-    console.log("Sign In Values: ", values);
+    const {taiKhoan, matKhau} = values;
+    const signInData = {taiKhoan, matKhau}
+    console.log("Sign In Values: ", signInData);
     try {
-      const result = await signInApi(values);
-      // console.log({ result });
-      const submitSignInData = {
-        ...result.data.content,
-        matKhau: values.matKhau,
-      };
-      console.log({ submitSignInData });
-      dispatch(setUserAction(submitSignInData));
-      localStorage.setItem(USER_INFO_KEY, JSON.stringify(submitSignInData));
+      console.log("Signing In...");
+      const result = await signInApi(signInData);
+      console.log("Sign In result: ", result.data.content);
+      dispatch(setUserAction(result.data.content));
+      localStorage.setItem(USER_INFO_KEY, JSON.stringify(result.data.content));
       setShowError("d-none");
-      message.success(`Welcome Back ${values.taiKhoan}`);
+      message.success(`Welcome Back ${taiKhoan}`);
       navigate("/");
     } catch (error) {
       console.log(error);
