@@ -43,7 +43,6 @@ export default function UserInfo({ userProfile }) {
     email,
     taiKhoan,
     maLoaiNguoiDung,
-    accessToken,
   } = userProfile;
   const initialValues = {
     user: {

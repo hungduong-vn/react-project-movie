@@ -4,17 +4,17 @@ import { useAsync } from "../../../hooks/useAsync";
 import { getUserInfoApi } from "../../../services/user";
 import { formatDate } from "../../../utils/helper";
 import "./BookingHistory.scss";
-export default function BookingHistory() {
-  const userInfo = useSelector((state) => state.userReducer.userInfo);
-  console.log({ userInfo });
-  const { state: bookingInfo } = useAsync({
-    service: () => getUserInfoApi(userInfo.taiKhoan),
-    deps: [userInfo.taiKhoan],
-    condition: !!userInfo.taiKhoan,
-  });
-  console.log({ bookingInfo });
+export default function BookingHistory({orders}) {
+  // const userInfo = useSelector((state) => state.userReducer.userInfo);
+  // console.log({ userInfo });
+  // const { state: bookingInfo } = useAsync({
+  //   service: () => getUserInfoApi(userInfo.taiKhoan),
+  //   deps: [userInfo.taiKhoan],
+  //   condition: !!userInfo.taiKhoan,
+  // });
+  // console.log({ bookingInfo });
   const renderOrder = () => {
-    return bookingInfo.thongTinDatVe.map((order) => {
+    return orders.map((order) => {
       return (
         <div className="row order" key={order.maVe}>
           <div className="col-4 order__left">
@@ -37,5 +37,5 @@ export default function BookingHistory() {
       );
     });
   };
-  return <div className="bookingHistory">{bookingInfo && renderOrder()}</div>;
+  return <div className="bookingHistory">{orders && renderOrder()}</div>;
 }
