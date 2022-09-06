@@ -17,9 +17,9 @@ export default function UserAccount() {
       <Tabs defaultActiveKey="1">
         <Tabs.TabPane tab="User Information" key="1">
           <UserInfo userProfile={userProfile} />
-          <button className="btn btn-outline-primary" onClick={handleGetUser}>
+          {/* <button className="btn btn-outline-primary" onClick={handleGetUser}>
             GET USER
-          </button>
+          </button> */}
         </Tabs.TabPane>
         <Tabs.TabPane tab="Booking History" key="2">
           <BookingHistory orders={orders}/>
