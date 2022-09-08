@@ -6,7 +6,7 @@ export default class HomeMoviesMultiple extends Component {
   render() {
     const { movieList } = this.props;
     const settings = {
-      className: "center",
+      // className: "center",
       centerMode: true,
       infinite: true,
       // centerPadding: "60px",
