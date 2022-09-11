@@ -1,15 +1,28 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import { getImgSize} from "../../../utils/helper";
+import { isImgFit } from "../../../utils/helper";
 import HomeMovie from "../HomeMovie/HomeMovie";
 
 export default class HomeMoviesMultiple extends Component {
-  sortFitImg = (movies) => {
-    return movies.filter((ele) => getImgSize(ele.hinhAnh));
-  };
+  constructor(props) {
+    super(props);
+    this.state = { movies: [] };
+  }
   render() {
+    const sortFitImg = async (movies) => {
+      const result = [];
+      for (let movie of movies) {
+        if (await isImgFit(movie.hinhAnh)) {
+          result.push(movie);
+        }
+      }
+      this.setState({ movies: [...result] });
+      // console.log("Sorted Fit Movies:", result);
+      return result;
+    };
     const { movieList } = this.props;
-    console.log({ movieList });
+    // sortFitImg(movieList);
+    // console.log({ movieList });
     const settings = {
       // className: "center",
       centerMode: true,
@@ -20,11 +33,12 @@ export default class HomeMoviesMultiple extends Component {
       rows: 2,
       slidesPerRow: 1,
     };
-
+    // this.sortFitImg(movieList).then((e) => console.log("Result", e));
+    console.log(this.state);
     return (
       <div>
         <Slider {...settings}>
-          {this.sortFitImg(movieList).map((ele) => {
+          {movieList.map((ele) => {
             return <HomeMovie movie={ele} key={ele.maPhim} />;
           })}
         </Slider>

@@ -38,15 +38,24 @@ export const formatter = new Intl.NumberFormat("en-US", {
   //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
 
-export const getImgSize = (url) => {
-  console.log("geImgSize");
-  var img = new Image();
-  img.onload = function () {
-    console.log(this.width, this.height, isImgFit(this.width, this.height));
-    return isImgFit(this.width, this.height);
-  };
-  img.src = url;
+export const getImgFromUrl = (url) => {
+  // console.log("geImgSize");
+  // const img = new Image();
+  // img.onload = function () {
+  //   console.log(this.width, this.height, isImgFit(this.width, this.height));
+  //   return isImgFit(this.width, this.height);
+  // };
+  // img.src = url;
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.src = url;
+    img.onload = () => resolve(img);
+    img.onerror = () => reject(img);
+  });
 };
-export const isImgFit = (w, h) => {
-  return w / h === 214 / 317;
+export const isImgFit = async (url) => {
+  const img = await getImgFromUrl(url);
+  const result = img.width / img.height === 214 / 317;
+  // console.log("isFit: ", result);
+  return result;
 };
