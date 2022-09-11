@@ -5,6 +5,7 @@ import HomeMovie from "../HomeMovie/HomeMovie";
 export default class HomeMoviesMultiple extends Component {
   render() {
     const { movieList } = this.props;
+    console.log({movieList});
     const settings = {
       // className: "center",
       centerMode: true,
