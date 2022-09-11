@@ -21,7 +21,6 @@ export default class HomeMoviesMultiple extends Component {
       return result;
     };
     const { movieList } = this.props;
-    // sortFitImg(movieList);
     // console.log({ movieList });
     const settings = {
       // className: "center",
@@ -33,7 +32,6 @@ export default class HomeMoviesMultiple extends Component {
       rows: 2,
       slidesPerRow: 1,
     };
-    // this.sortFitImg(movieList).then((e) => console.log("Result", e));
     console.log(this.state);
     return (
       <div>
