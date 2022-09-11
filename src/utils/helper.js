@@ -37,3 +37,16 @@ export const formatter = new Intl.NumberFormat("en-US", {
   //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
   //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
 });
+
+export const getImgSize = (url) => {
+  console.log("geImgSize");
+  var img = new Image();
+  img.onload = function () {
+    console.log(this.width, this.height, isImgFit(this.width, this.height));
+    return isImgFit(this.width, this.height);
+  };
+  img.src = url;
+};
+export const isImgFit = (w, h) => {
+  return w / h === 214 / 317;
+};

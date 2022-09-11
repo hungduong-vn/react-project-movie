@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
+import { getImgSize} from "../../../utils/helper";
 import HomeMovie from "../HomeMovie/HomeMovie";
 
 export default class HomeMoviesMultiple extends Component {
+  sortFitImg = (movies) => {
+    return movies.filter((ele) => getImgSize(ele.hinhAnh));
+  };
   render() {
     const { movieList } = this.props;
-    console.log({movieList});
+    console.log({ movieList });
     const settings = {
       // className: "center",
       centerMode: true,
@@ -20,9 +24,9 @@ export default class HomeMoviesMultiple extends Component {
     return (
       <div>
         <Slider {...settings}>
-          {movieList.map((ele) => (
-            <HomeMovie movie={ele} key={ele.maPhim} />
-          ))}
+          {this.sortFitImg(movieList).map((ele) => {
+            return <HomeMovie movie={ele} key={ele.maPhim} />;
+          })}
         </Slider>
       </div>
     );
