@@ -3,6 +3,21 @@ import Slider from "react-slick";
 import { isImgFit } from "../../../utils/helper";
 import HomeMovie from "../HomeMovie/HomeMovie";
 
+let slidesToShow = 4;
+const viewWidth = window.innerWidth;
+console.log("View Width:", window.innerWidth);
+if (viewWidth > 1340) {
+  slidesToShow = 5;
+} else if (viewWidth > 1200) {
+  slidesToShow = 4;
+} else if (viewWidth > 800){
+  slidesToShow = 3;
+} else if (viewWidth > 500) {
+  slidesToShow = 2
+} else {
+  slidesToShow = 1;
+}
+
 export default function HomeMoviesMultiple({ movieList }) {
   const sortFitImg = async (movies) => {
     const result = [];
@@ -16,11 +31,11 @@ export default function HomeMoviesMultiple({ movieList }) {
   };
   // console.log({ movieList });
   const settings = {
-    // className: "center",
-    centerMode: true,
-    infinite: true,
+    className: "center",
+    // centerMode: true,
+    // infinite: true,
     // centerPadding: "60px",
-    slidesToShow: 4,
+    slidesToShow,
     speed: 500,
     rows: 2,
     slidesPerRow: 1,
