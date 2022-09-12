@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Slider from "react-slick";
 import { isImgFit } from "../../../utils/helper";
 import HomeMovie from "../HomeMovie/HomeMovie";
@@ -10,10 +10,10 @@ if (viewWidth > 1340) {
   slidesToShow = 5;
 } else if (viewWidth > 1200) {
   slidesToShow = 4;
-} else if (viewWidth > 800){
+} else if (viewWidth > 800) {
   slidesToShow = 3;
 } else if (viewWidth > 500) {
-  slidesToShow = 2
+  slidesToShow = 2;
 } else {
   slidesToShow = 1;
 }
