@@ -23,7 +23,7 @@ export default function MovieInfo({ info }) {
             <span className="movieInfo__item">Rating: </span>
             <span className="movieInfo__rating">{info.danhGia}</span>/10
           </div>
-          <div>
+          <div className="mb-5">
             <span className="movieInfo__item">Premier Date: </span>
             <span>{formatDate(info.ngayKhoiChieu, "DD/MM/YYYY")}</span>
           </div>

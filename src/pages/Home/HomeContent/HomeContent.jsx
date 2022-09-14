@@ -8,7 +8,7 @@ export default function HomeContent() {
     <>
       <HomeCarousel />
       <HomeMovies/>
-      {/* <HomeMenu/> */}
+      <HomeMenu/>
     </>
   );
 }

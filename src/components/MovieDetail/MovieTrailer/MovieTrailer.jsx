@@ -11,6 +11,9 @@ export default function MovieTrailer({ link, setShowState, title }) {
     }, 200);
   };
   const transformLink = (link) => {
+    if (link.includes("embed")) {
+      return link;
+    }
     if (link.includes("youtu.be")) {
       link = link.replace("youtu.be", "youtube.com");
     }
