@@ -10,11 +10,20 @@ export default function MovieTrailer({ link, setShowState, title }) {
       setShowState(false);
     }, 200);
   };
+  const transformLink = (link) => {
+    if (link.includes("youtu.be")) {
+      link = link.replace("youtu.be", "youtube.com");
+    }
+    const subLink = link.slice(0, link.lastIndexOf("/"));
+    return link.includes("watch?v=")
+      ? link.replace("watch?v=", "embed/")
+      : link.replace(subLink, subLink + "/embed");
+  };
   return (
     <div className="movieTrailer" onClick={closeTrailer}>
       <iframe
         style={{ width: "60vw", height: "40vw" }}
-        src={link}
+        src={transformLink(link)}
         title={title}
         frameBorder={0}
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
