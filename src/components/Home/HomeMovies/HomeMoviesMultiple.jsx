@@ -31,7 +31,7 @@ export default function HomeMoviesMultiple({ movieList }) {
   };
   // console.log({ movieList });
   const settings = {
-    className: "center",
+    // className: "center",
     // centerMode: true,
     // infinite: true,
     // centerPadding: "60px",

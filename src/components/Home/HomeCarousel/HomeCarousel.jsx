@@ -22,7 +22,7 @@ const HomeCarousel = () => {
       return (
         <div
           key={ele.maBanner}
-          className={`carousel-item${idx === 0 ? " active" : ""}`}
+          className={`carousel-item banner${idx === 0 ? " active" : ""}`}
         >
           <img className="d-block w-100" src={ele.hinhAnh} alt="First slide" />
         </div>
