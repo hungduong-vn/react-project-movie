@@ -31,20 +31,25 @@ export default function HomeMoviesMultiple({ movieList }) {
   };
   // console.log({ movieList });
   const settings = {
-    // className: "center",
-    // centerMode: true,
-    // infinite: true,
-    // centerPadding: "60px",
+    className: "center",
+    centerMode: true,
+    infinite: true,
+    centerPadding: "60px",
     slidesToShow,
     speed: 500,
     rows: 2,
     slidesPerRow: 1,
+    dots: true,
   };
   return (
     <div>
       <Slider {...settings}>
-        {movieList.map((ele) => {
-          return <HomeMovie movie={ele} key={ele.maPhim} />;
+        {movieList.slice(0, 20).map((ele) => {
+          return (
+            <div key={ele.maPhim} className="d-flex justify-center">
+              <HomeMovie movie={ele} />
+            </div>
+          );
         })}
       </Slider>
     </div>
