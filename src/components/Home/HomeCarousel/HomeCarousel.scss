@@ -2,6 +2,13 @@
   height: 650px;
   overflow: hidden;
 }
-.img-fluid{
+.img-fluid {
   width: 100%;
+}
+
+.carousel__img {
+  background-position: center;
+  background-repeat: none;
+  background-size: cover;
+  height: 75vh;
 }
