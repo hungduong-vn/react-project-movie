@@ -7,7 +7,7 @@ import SorryPage from "../SorryPage/SorryPage";
 import { useState } from "react";
 
 export default function HomeLayout() {
-  const [isScreenSmall, setIsScreenSmall] = useState(false);
+  const [isScreenSmall, setIsScreenSmall] = useState(window.innerWidth < 1024);
   window.onresize = () => {
     if (window.innerWidth < 1024) {
       setIsScreenSmall(true);
