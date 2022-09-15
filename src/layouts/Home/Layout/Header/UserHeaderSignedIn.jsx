@@ -30,7 +30,7 @@ export default function UserHeaderSignedIn({ userState }) {
         </span>
         <div className="dropdown ml-3">
           <UserOutlined className="userIcon dropbtn" />
-          <div className="dropdown-content">
+          <div className="dropdown-content" style={{ zIndex: 2 }}>
             <div className="userIcon__text">
               <Link to="/user-account">
                 <SettingOutlined className="mr-2 logOutIcon" />
