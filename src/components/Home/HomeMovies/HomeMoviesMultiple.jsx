@@ -4,7 +4,7 @@ import { isImgFit } from "../../../utils/helper";
 import HomeMovie from "../HomeMovie/HomeMovie";
 
 let slidesToShow = 4;
-console.log("View Width:", window.innerWidth);
+// console.log("View Width:", window.innerWidth);
 if (window.innerWidth > 1400) {
   slidesToShow = 5;
 } else if (window.innerWidth > 1200) {
@@ -19,14 +19,15 @@ if (window.innerWidth > 1400) {
 
 export default function HomeMoviesMultiple({ movieList }) {
   // console.log({ movieList });
+  const moviesCount = movieList.length;
   const settings = {
     className: "center",
     centerMode: true,
     infinite: true,
     centerPadding: "60px",
-    slidesToShow,
+    slidesToShow: moviesCount > 5 ? slidesToShow : moviesCount,
     speed: 500,
-    rows: 2,
+    rows: moviesCount > 10 ? 2 : 1,
     slidesPerRow: 1,
     dots: true,
   };
