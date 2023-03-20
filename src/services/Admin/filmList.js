@@ -1,7 +1,7 @@
 import axios from "axios";
+import { MOVIE_GROUP_ID } from "../../constants/common";
 import { request } from "../axios.configs";
 // import { request } from "../configs/axios";
-// import { BASE_URL, TOKENCYBERSOFT } from "../constants/common";
 
 const fetchFilmListApi = () => {
     // return axios({
@@ -12,7 +12,7 @@ const fetchFilmListApi = () => {
     //     }
     // })
     return request({
-        url: '/QuanLyPhim/LayDanhSachPhim?maNhom=GP02',
+        url: `/QuanLyPhim/LayDanhSachPhim?maNhom=${MOVIE_GROUP_ID}`,
         method: 'get',
     })
 };
