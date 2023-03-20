@@ -9,7 +9,7 @@ import { Breadcrumb, Button, Layout, Menu, message } from "antd";
 import React, { useState } from "react";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import { USER_INFO_KEY } from "../../constants/common";
 import "./index.scss";
 const { Header, Content, Footer, Sider } = Layout;
@@ -60,7 +60,7 @@ export default function AdminLayout() {
       type: "USER_UPLOAD",
       payload: null,
     });
-    message.success("Logged Out Successfully!")
+    message.success("Logged Out Successfully!");
     navigate("/");
   };
   return (
@@ -76,7 +76,9 @@ export default function AdminLayout() {
       >
         <div className="logo">
           <span className="text-light p-3">
-            <i className="fa-solid fa-film text-info fa-2x"></i>Cinema
+            <Link to={"/"}>
+              <i className="fa-solid fa-film text-info fa-2x"></i>Cinema
+            </Link>
           </span>
         </div>
         <Menu
