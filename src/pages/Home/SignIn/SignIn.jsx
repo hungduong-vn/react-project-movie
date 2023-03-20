@@ -17,9 +17,7 @@ const SignIn = () => {
     const signInData = {taiKhoan, matKhau}
     console.log("Sign In Values: ", signInData);
     try {
-      console.log("Signing In...");
       const result = await signInApi(signInData);
-      console.log("Sign In result: ", result.data.content);
       dispatch(setUserAction(result.data.content));
       localStorage.setItem(USER_INFO_KEY, JSON.stringify(result.data.content));
       setShowError("d-none");
